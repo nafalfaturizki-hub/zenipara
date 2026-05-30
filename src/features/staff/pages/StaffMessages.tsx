@@ -180,9 +180,8 @@ export default function StaffMessages() {
                 role="tab"
                 aria-selected={tab === t}
                 onClick={() => setTab(t)}
-                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                  tab === t ? 'bg-primary text-white' : 'text-text-muted hover:text-text-primary'
-                }`}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${tab === t ? 'bg-primary text-white' : 'text-text-muted hover:text-text-primary'
+                  }`}
               >
                 {t === 'inbox' ? 'Masuk' : 'Terkirim'}
                 {t === 'inbox' && unreadCount > 0 && (
@@ -258,9 +257,8 @@ export default function StaffMessages() {
                 <button
                   key={msg.id}
                   onClick={() => handleOpenMessage(msg)}
-                  className={`app-card w-full p-4 text-left transition-colors hover:border-primary/50 ${
-                    isUnread ? 'border-primary/30' : 'border-surface'
-                  }`}
+                  className={`app-card w-full p-4 text-left transition-colors hover:border-primary/50 ${isUnread ? 'border-primary/30' : 'border-surface'
+                    }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3 min-w-0 flex-1">
