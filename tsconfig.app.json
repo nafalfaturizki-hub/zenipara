@@ -19,7 +19,16 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/features/store/authStore": ["./src/features/auth/authStore.ts"],
+      "@/features/store/adminDashboardStore": ["./src/features/admin/adminStore.ts"],
+      "@/features/store/komandanDashboardStore": ["./src/features/komandan/komandanStore.ts"],
+      "@/features/store/featureStore": ["./src/store/featureStore.ts"],
+      "@/features/store/gatePassStore": ["./src/store/gatePassStore.ts"],
+      "@/features/store/platformStore": ["./src/store/platformStore.ts"],
+      "@/features/store/posJagaStore": ["./src/store/posJagaStore.ts"],
+      "@/features/store/uiStore": ["./src/store/uiStore.ts"],
+      "@/features/staff/types": ["./src/types/index.ts"]
     }
   },
   "include": ["src"],

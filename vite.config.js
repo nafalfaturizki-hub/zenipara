@@ -12,9 +12,18 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-    },
+    alias: [
+      { find: '@/features/store/authStore', replacement: resolve(__dirname, './src/features/auth/authStore.ts') },
+      { find: '@/features/store/adminDashboardStore', replacement: resolve(__dirname, './src/features/admin/adminStore.ts') },
+      { find: '@/features/store/komandanDashboardStore', replacement: resolve(__dirname, './src/features/komandan/komandanStore.ts') },
+      { find: '@/features/store/featureStore', replacement: resolve(__dirname, './src/store/featureStore.ts') },
+      { find: '@/features/store/gatePassStore', replacement: resolve(__dirname, './src/store/gatePassStore.ts') },
+      { find: '@/features/store/platformStore', replacement: resolve(__dirname, './src/store/platformStore.ts') },
+      { find: '@/features/store/posJagaStore', replacement: resolve(__dirname, './src/store/posJagaStore.ts') },
+      { find: '@/features/store/uiStore', replacement: resolve(__dirname, './src/store/uiStore.ts') },
+      { find: '@/features/staff/types', replacement: resolve(__dirname, './src/types/index.ts') },
+      { find: '@', replacement: resolve(__dirname, './src') },
+    ],
   },
   test: {
     globals: true,
