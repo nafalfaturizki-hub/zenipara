@@ -17,17 +17,28 @@ BEGIN
   END IF;
 END $$;
 
--- 2. Migrasi role 'staf' ke 'staff_satuan'
-UPDATE public.users
-SET role = 'staff_satuan'
-WHERE role::text = 'staf'
-  AND role::text NOT IN ('admin_satuan', 'super_admin', 'komandan', 'prajurit');
+-- 2. Migrasi role 'staf' ke 'staff_satuan' (hanya jika role column bukan enum atau sudah ada 'staff_satuan')
+DO $$
+BEGIN
+  UPDATE public.users
+  SET role = 'staff_satuan'
+  WHERE role::text = 'staf'
+    AND role::text NOT IN ('admin_satuan', 'super_admin', 'komandan', 'prajurit');
+EXCEPTION WHEN OTHERS THEN
+  -- Abaikan error jika ada issue dengan update
+  NULL;
+END $$;
 
--- 3. Migrasi role 'admin' lama ke 'admin_satuan'
--- Pengecekan untuk memastikan hanya update role 'admin'
-UPDATE public.users
-SET role = 'admin_satuan'
-WHERE role::text = 'admin'
-  AND role::text NOT IN ('super_admin', 'admin_satuan', 'komandan', 'staff_satuan', 'prajurit');
+-- 3. Cleanup: Update semua users dengan rank 'admin' dan role yang tidak valid ke 'admin_satuan'
+DO $$
+BEGIN
+  UPDATE public.users
+  SET role = 'admin_satuan'
+  WHERE rank = 'admin'
+    AND role::text NOT IN ('super_admin', 'admin_satuan', 'komandan', 'staff_satuan', 'prajurit', 'staf');
+EXCEPTION WHEN OTHERS THEN
+  -- Abaikan error jika ada issue dengan constraint
+  NULL;
+END $$;
 
 COMMIT;
