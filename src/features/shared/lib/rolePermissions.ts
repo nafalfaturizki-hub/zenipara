@@ -88,6 +88,8 @@ export const ROLE_ROUTE_PATHS = {
     schedule:        '/admin/schedule',
     posJaga:         '/admin/pos-jaga',
     documents:       '/admin/documents',
+    satuan:          '/admin/satuan',
+    audit:           '/admin/audit',
     settings:        '/admin/settings',
   },
   komandan: {

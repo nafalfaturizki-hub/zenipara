@@ -71,3 +71,5 @@ skills-lock.json
 # E2E / Playwright test artifacts
 playwright-report/
 test-results/
+.vercel
+.env*
